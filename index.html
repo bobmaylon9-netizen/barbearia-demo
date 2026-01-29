@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<title>Barbearia Luxo</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+body {
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+  background: #0d0d0d;
+  color: #fff;
+}
+
+header {
+  background: linear-gradient(135deg, #000, #1a1a1a);
+  padding: 50px 20px;
+  text-align: center;
+}
+
+header h1 {
+  font-size: 42px;
+  letter-spacing: 3px;
+}
+
+header p {
+  color: #cfa45f;
+}
+
+.section {
+  padding: 40px 20px;
+  max-width: 1100px;
+  margin: auto;
+}
+
+.services {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+}
+
+.service {
+  background: #151515;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 0 20px rgba(207,164,95,0.15);
+}
+
+.service h3 {
+  color: #cfa45f;
+}
+
+.service button {
+  background: #cfa45f;
+  color: #000;
+  border: none;
+  padding: 12px;
+  width: 100%;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.form {
+  background: #151515;
+  padding: 30px;
+  border-radius: 12px;
+  margin-top: 40px;
+}
+
+input, button {
+  width: 100%;
+  padding: 12px;
+  margin-top: 10px;
+  border-radius: 8px;
+  border: none;
+}
+
+button {
+  background: #cfa45f;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+footer {
+  text-align: center;
+  padding: 20px;
+  color: #777;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <h1>BARBEARIA PRIME</h1>
+  <p>Estilo • Luxo • Precisão</p>
+</header>
+
+<section class="section">
+<h2>💈 Serviços</h2>
+
+<div class="services">
+  <div class="service"><h3>Corte Degradê</h3><button onclick="addService('Corte Degradê')">Adicionar</button></div>
+  <div class="service"><h3>Navalhado</h3><button onclick="addService('Navalhado')">Adicionar</button></div>
+  <div class="service"><h3>Platinado</h3><button onclick="addService('Platinado')">Adicionar</button></div>
+  <div class="service"><h3>Barba Completa</h3><button onclick="addService('Barba Completa')">Adicionar</button></div>
+  <div class="service"><h3>Sobrancelha</h3><button onclick="addService('Sobrancelha')">Adicionar</button></div>
+  <div class="service"><h3>Combo Corte + Barba</h3><button onclick="addService('Combo Corte + Barba')">Adicionar</button></div>
+</div>
+
+<div class="form">
+<h2>📅 Agendamento</h2>
+<input id="name" placeholder="Nome do cliente">
+<input id="date" type="date">
+<input id="time" type="time">
+<button onclick="sendWhats()">Agendar pelo WhatsApp</button>
+</div>
+</section>
+
+<footer>
+© Barbearia Prime • Demo Profissional
+</footer>
+
+<script>
+let cart = [];
+
+function addService(service) {
+  cart.push(service);
+  alert(service + " adicionado!");
+}
+
+function sendWhats() {
+  let name = document.getElementById('name').value;
+  let date = document.getElementById('date').value;
+  let time = document.getElementById('time').value;
+
+  let message = `Olá, quero agendar um horário 💈%0A%0A`;
+  message += `Nome: ${name}%0A`;
+  message += `Data: ${date}%0A`;
+  message += `Horário: ${time}%0A%0A`;
+  message += `Serviços:%0A`;
+
+  cart.forEach(s => message += `- ${s}%0A`);
+
+  let phone = "5599999999999"; // TROQUE PELO WHATSAPP DO DONO
+  window.open(`https://wa.me/${phone}?text=${message}`, '_blank');
+}
+</script>
+
+</body>
+</html>
